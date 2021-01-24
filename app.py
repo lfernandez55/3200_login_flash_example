@@ -28,10 +28,6 @@ def edit_account():
         request.form.username = "foo"
         request.form.password = "bar"
     elif request.method == 'POST':
-        if request.form['username'] != 'admin' or \
-                request.form['password'] != 'secret':
-            error = 'Invalid credentials'
-        else:
-            flash('Account updated')
-            return redirect(url_for('index'))
+        flash('Account updated')
+        return redirect(url_for('index'))
     return render_template('edit_account.html', error=error)
